@@ -2,17 +2,19 @@ require 'spec_helper'
 
 describe "Static pages" do
 
+  let(:base_title) { "Pelada Manager" }
+
   describe "Home page" do
 
-    it "should have the content 'Pelada Manager'" do
+    it "should have the content 'Home'" do
       visit '/static_pages/home'
-      page.should have_content('Pelada Manager')
+      page.should have_content('Home')
     end
 
     it "should have the right title" do
       visit '/static_pages/home'
       page.should have_selector('title', 
-                                :text => "Pelada Manager | Home");
+                                :text => "#{base_title} | Home");
     end
 
   end
@@ -27,7 +29,7 @@ describe "Static pages" do
     it "should have the right title" do
       visit '/static_pages/help'
       page.should have_selector('title', 
-                                :text => "Pelada Manager | Help");
+                                :text => "#{base_title} | Help");
     end
   end
 
@@ -41,7 +43,7 @@ describe "Static pages" do
    it "should have the right title" do
       visit '/static_pages/about'
       page.should have_selector('title', 
-                                :text => "Pelada Manager | About");
+                                :text => "#{base_title} | About");
     end
 
   end
