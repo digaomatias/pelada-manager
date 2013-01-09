@@ -6,15 +6,21 @@ describe "Static pages" do
 
   describe "Home page" do
 
-    it "should have the content 'Home'" do
+    it "should have the h1 'Pelada Manager'" do
       visit '/static_pages/home'
-      page.should have_content('Home')
+      page.should have_selector('h1', :text => 'Pelada Manager')
     end
 
-    it "should have the right title" do
+    it "should have the base title" do
       visit '/static_pages/home'
       page.should have_selector('title', 
-                                :text => "#{base_title} | Home");
+                                :text => "Pelada Manager")
+    end
+
+    it "should not have a custom page title" do
+      visit '/static_pages/home'
+      page.should_not have_selector('title', 
+                                :text => "| Home");
     end
 
   end
